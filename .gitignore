@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Secrets & API keys
+.env
+.env.local
+.streamlit/secrets.toml
+*.key
+config/secrets.py
