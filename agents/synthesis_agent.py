@@ -55,7 +55,7 @@ Do not invent statistics.
                 {"role": "user", "content": prompt}
             ],
             temperature=0.3,
-            max_tokens=1000
+            max_tokens=1500
         )
         report = response.choices[0].message.content
 
@@ -87,7 +87,7 @@ correct the report and return the corrected version only.
                 {"role": "user", "content": reflection_prompt}
             ],
             temperature=0,
-            max_tokens=1000
+            max_tokens=1500
         )
         final_report = reflection.choices[0].message.content
 
