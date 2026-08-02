@@ -49,12 +49,13 @@ Do not invent statistics.
 """
 
         response = self.client.chat.completions.create(
-            model="openrouter/free",
+            model="nvidia/nemotron-3-ultra-550b-a55b:free",
             messages=[
                 {"role": "system", "content": "You are an epidemiological analysis assistant."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.3
+            temperature=0.3,
+            max_tokens=1000
         )
         report = response.choices[0].message.content
 
@@ -80,12 +81,13 @@ correct the report and return the corrected version only.
 """
 
         reflection = self.client.chat.completions.create(
-            model="openrouter/free",
+            model="nvidia/nemotron-3-ultra-550b-a55b:free",
             messages=[
                 {"role": "system", "content": "You are a quality assurance reviewer."},
                 {"role": "user", "content": reflection_prompt}
             ],
-            temperature=0
+            temperature=0,
+            max_tokens=1000
         )
         final_report = reflection.choices[0].message.content
 
