@@ -1,0 +1,12 @@
+streamlit
+requests
+python-dotenv
+openai
+langchain-text-splitters
+langchain-huggingface
+langchain-chroma
+langchain-community
+pypdf
+pdfplumber
+sentence-transformers
+chromadb
