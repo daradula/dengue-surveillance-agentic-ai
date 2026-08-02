@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 from openai import OpenAI
 from agents.data_agent import DataAgent
@@ -7,13 +8,20 @@ from agents.knowledge_agent import KnowledgeAgent
 load_dotenv()
 
 
+def get_api_key(key_name):
+    try:
+        return st.secrets[key_name]
+    except (FileNotFoundError, KeyError):
+        return os.getenv(key_name)
+
+
 class SynthesisAgent:
     def __init__(self):
         self.data_agent = DataAgent()
         self.knowledge_agent = KnowledgeAgent()
         self.client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
-            api_key=os.getenv("OPENROUTER_API_KEY")
+            api_key=get_api_key("OPENROUTER_API_KEY")
         )
 
     def generate_report(self, district, query):
